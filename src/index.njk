@@ -4,11 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>👋 HelloTrello</title>
-  {% set css %}
-    {% include "style.css" %}
-  {% endset %}
   <style>
-    {{ css | cssmin | safe }}
+    {% include "css/styles.css" %}
   </style>
 </head>
 <body>
@@ -21,7 +18,7 @@
     </header>
   </div>
   <main>
-    {% for card in trello %}
+    {% for card in trello.Menu.cards %}
     <section>
       <h2>{{ card.name }}</h2>
       <div>

@@ -4,9 +4,15 @@ const fetch = require('node-fetch');
 // With public fallbacks for happier onboarding
 require('dotenv').config();
 const {
-  TRELLO_BOARD_URL='https://trello.com/b/Zzc0USwZ/hellotrello',
-  TRELLO_LIST_ID='5e98325d6d6bd120f2b7395f',
+  TRELLO_BOARD_URL,
   BRANCH } = process.env;
+
+// A little helper to format strings as PascalCase
+const toPascalCase = (str) => {
+  return str.toLowerCase().replace(/(?:(^.)|(\s+.))/g, match => {
+    return match.charAt(match.length-1).toUpperCase();
+  });
+}
 
 
 module.exports = () => {
@@ -16,10 +22,22 @@ module.exports = () => {
     .then(res => res.json())
     .then(json => {
 
-      // Just focus on the cards which are in the list we want
-      // and do not have a closed status
+      // construct an object to contain the cards in each active list
+      let listObject = {};
+      // No archived lists, thanks
+      const activeLists = json.lists.filter(list => {
+        return !list.closed;
+      });
+      activeLists.forEach(list => {
+        listObject[toPascalCase(list.name)] = {
+          "idList": list.id,
+          "cards": []
+        }
+      });
+
+      // Just focus on the cards which do not have a closed status
       let contentCards = json.cards.filter(card => {
-        return card.idList == TRELLO_LIST_ID && !card.closed;
+        return !card.closed;
       });
 
       // only include cards labelled with "live" or with
@@ -31,15 +49,21 @@ module.exports = () => {
         )).length;
       });
 
-      // If a card has an attachment, add it as an image in the descriotion markdown
+      // enrich and organise cards into an object of lists so we
+      // can address the cards in our templates with: trello.ListNameInPascalCase.cards
       contextCards.forEach(card => {
+        // If a card has an attachment, add it as an image in the descriotion markdown
         if(card.attachments.length) {
           card.name = "";
           card.desc = card.desc + `\n![${card.name}](${card.attachments[0].url} '${card.name}')`;
         }
-      })
+        // put this card into the right place in our object so we can
+        // access by list names when we use the data
+        let listName = Object.keys(listObject).find(key => listObject[key].idList === card.idList);
+        listObject[listName].cards.push(card);
+      });
 
       // return our data
-      return contextCards;
+      return listObject;
   });
 };
