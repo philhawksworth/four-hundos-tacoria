@@ -1,0 +1,14 @@
+---
+layout: layouts/base.njk
+title: About
+---
+
+{% for card in trello.AboutPage.cards %}
+<section>
+  <h2>{{ card.name }}</h2>
+  <div>
+    {{- card.desc | markdown | safe }}
+  </div>
+</section>
+{% endfor %}
+
