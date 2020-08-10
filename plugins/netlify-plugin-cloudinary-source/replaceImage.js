@@ -30,7 +30,7 @@ const replaceImageURL = options => tree => {
       const imageURL = isLocal ? getFullLocalImageURL(imagePath) : imagePath;
 
       if (imageURL) {
-        const cloudURL = `https://res.cloudinary.com/${options.cloudName}/image/fetch/w_1000,h_1000,c_limit,q_auto,f_auto/${imageURL}`;
+        const cloudURL = `https://res.cloudinary.com/${options.cloudName}/image/fetch/w_700,h_700,c_limit,q_auto,f_auto/${imageURL}`;
         node.properties.src = cloudURL;
         console.log('Prime cloudinary asset: ', cloudURL);
         fetch(cloudURL);

@@ -3,9 +3,20 @@ layout: layouts/base.njk
 title: Menu
 ---
 
-{% for card in trello.Menu.cards %}
+<h2>To eat</h2>
+{% for card in trello.Food.cards %}
 <section>
-  <h2>{{ card.name }}</h2>
+  <h3>{{ card.name }}</h3>
+  <div>
+    {{- card.desc | markdown | safe }}
+  </div>
+</section>
+{% endfor %}
+
+<h2>To drink</h2>
+{% for card in trello.Drink.cards %}
+<section>
+  <h3>{{ card.name }}</h3>
   <div>
     {{- card.desc | markdown | safe }}
   </div>
