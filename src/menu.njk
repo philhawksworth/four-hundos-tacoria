@@ -1,8 +1,9 @@
 ---
 layout: layouts/base.njk
+title: Menu
 ---
 
-{% for card in trello.HomePage.cards %}
+{% for card in trello.Menu.cards %}
 <section>
   <h2>{{ card.name }}</h2>
   <div>
@@ -10,4 +11,3 @@ layout: layouts/base.njk
   </div>
 </section>
 {% endfor %}
-

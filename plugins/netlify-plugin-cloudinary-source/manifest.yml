@@ -1,0 +1,4 @@
+name: netlify-plugin-cloudinary-source
+inputs:
+  - name: cloudinaryCloudName
+    required: true

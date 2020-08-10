@@ -2,6 +2,7 @@
   command = "npm run build"
   publish = "dist"
 
+
 # Config for the Netlify Build Plugin: netlify-plugin-minify-html
 [[plugins]]
   package = "netlify-plugin-minify-html"
@@ -19,3 +20,29 @@
   [plugins.inputs.minifierOptions]
     removeComments = true
     collapseInlineTagWhitespace = false
+
+
+
+# Config for the Netlify Build Plugin: netlify-plugin-trello-lists
+[[plugins]]
+  package = "netlify-plugin-trello-lists"
+
+  [plugins.inputs]
+
+    # The URL of a publicly visible Trello board
+    trelloBoardUrl = "https://trello.com/b/gr1JlVXI/four-hundos-tacoria"
+
+    # Location of the JSON data file to be generated
+    dataFilePath = "src/_data/trello.json"
+
+    # If the plugin fails, should it do so quietly or cancel the build?
+    # "failBuild" | "failPlugin"
+    fail = "failBuild"
+
+
+# Config for the Netlify Build Plugin: netlify-plugin-add-instagram
+[[plugins]]
+  package = "./plugins/netlify-plugin-cloudinary-source"
+
+  [plugins.inputs]
+    cloudinaryCloudName = "jlengstorf"

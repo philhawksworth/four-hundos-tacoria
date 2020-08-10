@@ -15,25 +15,67 @@
   color: $page-color;
 }
 
-html {
-  background-color: $accent-color;
-}
-
 body {
   text-align: center;
   background-color: $page-color;
-  color: mix($text-color, $page-color, 70%);
-  background: radial-gradient(ellipse at center, rgba(17,17,17,1) 10%, rgba(50,50,50,1) 100%);
-  background-attachment: fixed;
+  color: $text-color;
   font-family: sans-serif;
-  font-weight: 30;
-  font-size: 16px;
+  font-weight: 300;
+  font-size: 14px;
   line-height: 1.8;
   min-height: 100vh;
 
   @include bp(mid) {
+    font-size: 16px;
+  }
+  @include bp(wide) {
     font-size: 18px;
   }
+}
+
+
+header {
+  display: block;
+  position: relative;
+  padding: 3em 0;
+
+  h1 {
+    font-size: 2rem;
+    width: 4em;
+    margin: 0 auto;
+    padding: 0.3em;
+    line-height: 0.9;
+    border: solid 0.15em #fff;
+    text-shadow: white 0 0 10px;
+    box-shadow: white 0 0 10px;
+    color: white;
+    background-color: rgba(23, 145, 98, 0.6);
+
+    @include bp(mid) {
+      font-size: 3rem;
+    }
+    @include bp(wide) {
+      font-size: 4rem;
+    }
+  }
+
+}
+header::after {
+  content: "";
+  background-image: url(/images/taco-platter.jpg);
+  background-size: cover;
+  background-position-y: center;
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+main {
+  padding: 6rem 0;
 }
 
 .container {
@@ -48,27 +90,19 @@ body {
   @include bp(wide) {
     width: 700px;
   }
+
+  img {
+    width: 100%;
+  }
 }
 
 
 h1, h2, h3 {
   color: $text-color;
   font-weight: 600;
-  margin-top:2.5em;
-  margin-bottom:1em;
-  line-height: 1em;
-}
-h1 {
-  margin-top:0.4em;
-  font-size: 4em;
-  line-height: 0.9em;
-
-  @include bp(mid) {
-    font-size: 5em;
-  }
-  @include bp(wide) {
-    font-size: 6em;
-  }
+  margin-top: 2.5rem;
+  margin-bottom:1rem;
+  line-height: 1;
 }
 
 
@@ -76,23 +110,7 @@ p {
   margin-bottom: 1em;
 }
 
-ul {
-  list-style: none;
-  small {
-    display: block;
-    margin-top: -0.2em;
-    margin-bottom: 0.5em;
-  }
-}
 
-ol {
-
-  li {
-    list-style-position: outside;
-    margin-left: 2em;
-    margin-bottom: 0.8em;
-  }
-}
 
 a:link,
 a:visited {
@@ -107,236 +125,41 @@ a:focus {
   border-bottom: solid 1px $accent-color;
 }
 
-
-
-.nav {
-  padding-top: 3em;
-
-  li {
-    display: inline;
-  }
-
-  a:link,
-  a:visited {
-    display: inline-block;
-    border-top: solid 1px mix($text-color,$page-color, 60%);
-    border-bottom-style: none;
-    padding-top: 0.8em;
-    padding-bottom: 2em;
-    margin-left: 0;
-    margin-right: 0.7em;
-    width: 8em;
-    text-align: left;
-    color: mix($text-color,$page-color, 80%);
-    text-decoration: none;
-  }
-
-  a:hover,
-  a:focus {
-      color: $text-color;
-      border-top: solid 1px $accent-color;
-      border-bottom-style: none;
-  }
-
-  small {
-    display: block;
-    font-size: 0.7em;
-    color: mix($text-color,$page-color, 60%);
-  }
-}
-
-
-
-.post {
-
-  h1 {
-    font-size: 3em;
-    line-height: 1.1em;
-    margin-bottom: 0.2em;
-
-    @include bp(mid) {
-      font-size: 4em;
-    }
-  }
-
-  main {
-    margin-top: 2em;
-    margin-bottom: 3em;
-    padding-bottom: 4em;
-    padding-top: 4em;
-    border-top: solid 1px mix($text-color, $page-color, 10%);
-    border-bottom: solid 1px mix($text-color, $page-color, 10%);
-  }
-
-}
-
-.date {
-  color: mix($text-color, $page-color, 30%);
-  font-size: 0.7em;
-
-  time {
-    color: mix($text-color, $page-color, 50%);
-  }
-}
-
-.comment {
-
-  padding-top: 2em;
-  padding-bottom: 2em;
-  border-bottom: solid 1px mix($text-color, $page-color, 10%);
-
-  .avatar {
-    width: 30px;
-    height: 30px;
-    border-radius: 40px;
-    margin-right: 0.5em;
-    padding-top:4px;
-    padding-bottom:4px;
-    padding-left:4px;
-    padding-right:4px;
-    border: solid 1px mix($text-color, $page-color, 50%);
-    box-shadow: 0 0px 6px 0 rgba(255,255,255,.3);
-  }
-  h3 {
-    margin-top: 0.2em;
-    margin-bottom: 0.4em;
-  }
-  .date {
-    margin-bottom:1em;
-  }
-
-  li {
-    list-style: inside;
-  }
-
-}
-
-.comment-text {
-  h1 { font-size: 2em; }
-  h2 { font-size: 1.6em; }
-  h3 { font-size: 1.4em; }
-  h4 { font-size: 1.2em; }
-  p {
-    margin-top: 0.5em;
-    margin-bottom: 1em;
-  }
-}
-
-
-form {
+.strapline {
+  display: inline-block;
+  padding: 0.3em 0.8em;
   margin-top: 1em;
-  margin-bottom: 2em;
-  .honey {
-    visibility: hidden;
-    height:1px;
-    overflow:none;
-  }
-   label {
-     display: block;
-     font-size: 1.1em;
-     color: $text-color;
-     margin-top:1em;
-     margin-bottom:0.6em;
-   }
-   small {
-     display: block;
-     font-size: 0.7em;
-     color: mix($text-color, $page-color, 50%)
-   }
-
-  input, textarea {
-    width: 100%;
-    border: solid 2px mix($text-color, $page-color, 70%);
-    background-color: mix($text-color, $page-color, 2%);
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 4px;
-    font-size: 16px;
-    color: $text-color;
-   }
-   textarea {
-     height:8em;
-   }
-
-   .needs-content {
-     border-bottom: dashed 4px $accent-color;
-   }
-}
-
-button {
-  margin-top: 1em;
-  margin-bottom: 1em;
-  padding: 0.5em 1em 0.5em 1em;
-  background-color: mix($text-color, $page-color, 80%);
-  border-radius: 2px;
-  color: $page-color;
-  font-size: 1em;
-  &:hover,
-  &:focus {
-    background-color: $text-color;
-    color: $page-color;
-    cursor: pointer;
-  }
-}
-
-
-.hidden {
-  display:none;
-}
-
-
-.note {
-  margin-top: 2em;
-  margin-bottom: 1em;
-  padding-top: 0em;
-  padding-bottom: 3em;
-  padding-left: 3em;
-  padding-right: 3em;
-  font-size: 0.8em;
-  background-color: $page-color;
-  border: solid 1px mix($accent-color, $page-color, 30%);
-
-  ul {
-    list-style: inside;
-  }
-}
-
-code {
-  font-size: 0.9em;
-  background-color: mix($text-color, $page-color, 10%);
-  padding-top: 0.1em;
-  padding-bottom: 0.1em;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  border-radius: 3px;
-}
-
-
-.footnote {
-
-  margin-top: 3em;
-  font-size: 0.8em;
+  background-color: #fff;
+  color: $accent-color;;
+  font-weight: bold;
   font-style: italic;
-  color: mix($text-color, $page-color, 30%);
-
-  a:link,
-  a:visited {
-    color: mix($accent-color, $page-color, 50%);
-  }
-  a:hover,
-  a:focus {
-    color: $text-color;
-  }
 }
+
+
+.trim {
+
+  padding: 0.5em;
+  background-color:  $accent-color;
+}
+.trim-orange {
+  padding: 0.5em;
+  background-color: $highlight-color;
+}
+.pattern {
+  border: 1em solid #fff;
+  border-image-source: url('/images/snake-pattern.svg');
+  border-image-slice: 50% 0;
+  border-image-repeat: round;
+}
+
+
 
 
 footer {
-  margin-top: 6em;
   padding-top: 4em;
   padding-bottom: 6em;
-  border-top: solid 1px mix($text-color, $page-color, 10%);
   font-size: 0.7em;
-  color: mix($text-color, $page-color, 40%);
+  background-color: #ddd;
 
   a:link,
   a:visited {
@@ -352,16 +175,3 @@ footer {
 
 }
 
-.video-responsive{
-  overflow:hidden;
-  padding-bottom:56.25%;
-  position:relative;
-  height:0;
-}
-.video-responsive iframe{
-  left:0;
-  top:0;
-  height:100%;
-  width:100%;
-  position:absolute;
-}

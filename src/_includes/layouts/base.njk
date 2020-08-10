@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="dns-prefetch" href="https://res.cloudinary.com/" >
+  <title>The Four Hundos Tacoria</title>
+  <meta name="description" content="An example resturant site, with its content and menu items sourced from Trello by a Netlify Build Plugin">
+  <style>
+    {% include "css/styles.css" %}
+  </style>
+</head>
+<body>
+  <div class="trim"><div class="pattern"></div></div>
+  <header>
+    <h1>The Four Hundos Tacoria</h1>
+    <p class="strapline">
+      Speedy and delicious!
+    </p>
+  </header>
+  <div class="trim"><div class="pattern"></div></div>
+
+  <main>
+  {{ content | safe }}
+  </main>
+
+  <div class="trim-orange"><div class="pattern"></div></div>
+  <footer>
+    <p>
+      This example includes <a href="https://stage--{{ site.host }}">staging</a> and <a href="https://{{ site.host }}">production</a> environments. Go ahead, take a look.
+    </p>
+    <p>
+      Environments are created by <a href="https://docs.netlify.com/site-deploys/overview/{{ site.utm }}#branches-and-deploys">Netlify's Branch Deploy</a> feature, but the code on each branch is identical — they simply filter the content included based on the labels on the Trello cards and the branch name.
+    </p>
+    <p>
+      Feel free to explore this site's <a href="{{ pkg.repository.url }}">code in GitHub</a> to learn more and try this out for yourself.
+    </p>
+  </footer>
+  <div class="trim-orange"><div class="pattern"></div></div>
+</body>
+</html>

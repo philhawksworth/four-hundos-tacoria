@@ -1,5 +1,5 @@
 
-module.exports = function(eleventyConfig) {
+module.exports = (eleventyConfig) => {
 
   // A handy markdown shortcode for blocks of markdown
   // coming from our data sources
@@ -7,23 +7,20 @@ module.exports = function(eleventyConfig) {
   const md = new markdownIt({
     html: true
   });
-  eleventyConfig.addPairedShortcode('markdown', (content) => {
+  eleventyConfig.addFilter('markdown', (content) => {
     return md.render(content);
   });
 
 
-  // Simply inline minified CSS
-  const CleanCSS = require('clean-css');
-  eleventyConfig.addFilter('cssmin', function(code) {
-    return new CleanCSS({}).minify(code).styles;
-  });
+  eleventyConfig.addPassthroughCopy("src/images");
 
 
   // Where are my things?
   return  {
     dir: {
       input: "src",
-      output: "dist"
+      output: "dist",
+      data: "_data"
     }
   };
 
