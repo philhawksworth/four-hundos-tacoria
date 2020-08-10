@@ -20,7 +20,7 @@ body {
   background-color: $page-color;
   color: $text-color;
   font-family: sans-serif;
-  font-weight: 300;
+  font-weight: normal;
   font-size: 14px;
   line-height: 1.8;
   min-height: 100vh;
@@ -33,11 +33,35 @@ body {
   }
 }
 
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  text-align: left;
+
+  @include bp(mid) {
+    width: 70%;
+  }
+  @include bp(wide) {
+    width: 700px;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+
 
 header {
   display: block;
   position: relative;
   padding: 3em 0;
+
+  .container {
+    text-align: center;
+  }
+
 
   h1 {
     font-size: 2rem;
@@ -46,10 +70,11 @@ header {
     padding: 0.3em;
     line-height: 0.9;
     border: solid 0.15em #fff;
-    text-shadow: white 0 0 10px;
+    text-shadow: white 0 0 4px;
     box-shadow: white 0 0 10px;
     color: white;
-    background-color: rgba(23, 145, 98, 0.6);
+    background-color: $accent-color;
+
 
     @include bp(mid) {
       font-size: 3rem;
@@ -57,6 +82,8 @@ header {
     @include bp(wide) {
       font-size: 4rem;
     }
+
+
   }
 
 }
@@ -78,23 +105,6 @@ main {
   padding: 6rem 0;
 }
 
-.container {
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  text-align: left;
-
-  @include bp(mid) {
-    width: 70%;
-  }
-  @include bp(wide) {
-    width: 700px;
-  }
-
-  img {
-    width: 100%;
-  }
-}
 
 
 h1, h2, h3 {
@@ -163,13 +173,13 @@ footer {
 
   a:link,
   a:visited {
-    color: mix($text-color, $page-color, 70%);
-    border-bottom: solid 1px mix($accent-color, $page-color, 70%);
+    color: $text-color;
+    border-bottom: solid 1px $highlight-color;
   }
 
   a:hover,
   a:focus {
-    color: $accent-color;
+    color: $text-color;
     border-bottom: solid 1px $text-color;
   }
 

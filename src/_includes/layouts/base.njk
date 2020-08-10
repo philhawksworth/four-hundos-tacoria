@@ -13,19 +13,24 @@
 <body>
   <div class="trim"><div class="pattern"></div></div>
   <header>
+    <div class="container">
     <h1>The Four Hundos Tacoria</h1>
     <p class="strapline">
       Speedy and delicious!
     </p>
+    </div>
   </header>
   <div class="trim"><div class="pattern"></div></div>
 
   <main>
-  {{ content | safe }}
+  <div class="container">
+    {{ content | safe }}
+  </div>
   </main>
 
   <div class="trim-orange"><div class="pattern"></div></div>
   <footer>
+    <div class="container">
     <p>
       This example includes <a href="https://stage--{{ site.host }}">staging</a> and <a href="https://{{ site.host }}">production</a> environments. Go ahead, take a look.
     </p>
@@ -36,6 +41,7 @@
       Feel free to explore this site's <a href="{{ pkg.repository.url }}">code in GitHub</a> to learn more and try this out for yourself.
     </p>
   </footer>
+  </div>
   <div class="trim-orange"><div class="pattern"></div></div>
 </body>
 </html>
