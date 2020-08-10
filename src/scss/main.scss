@@ -73,7 +73,7 @@ header {
     text-shadow: white 0 0 4px;
     box-shadow: white 0 0 10px;
     color: white;
-    background-color: $accent-color;
+    background-color: rgba($accent-color, .8) ;
 
 
     @include bp(mid) {
